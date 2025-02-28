@@ -8,11 +8,12 @@ export interface randomUser {
   phone: string
   userStatus: number
 }
-export interface petRandomOrderInterface {
+export interface petOrderInterface {
   id: number
   petId: number
   quantity: number
   shipDate: string
   status: string
   complete: boolean
+  unknownId?: number
 }

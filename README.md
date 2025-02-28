@@ -1,6 +1,8 @@
 ## Description
 
-This project is created in order to solve GreenTube QA assigment
+This project is created in order to solve GreenTube QA assigment.
+Environment is not stable so test are flacky - sometimes thay pass and sometimes thay fail.
+Example: Create pet order with id = 1 and afterwords get data for pet order id = 1. Result: 404
 
 ## Priject set up
 
