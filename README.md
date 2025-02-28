@@ -6,13 +6,18 @@ This project is created in order to solve GreenTube QA assigment
 
 To run project localy execute next steps:
 
-1. Install node.js (node version used 18.14.2)
+1. Install node.js
 2. Clone Git project to your PC
 3. Open it in IDE
-4. Install dependencies with command : npm ci
+4. Open terminal and install dependencies with command : npm ci
 5. Next commands are used to run tests:
 
-- npm run all
+## Running custom commands:
+
+- 'npm run prettier:write' - to format code
+- 'npm run prettier:check' - to check if code is formated properly
+- 'npx playwright test' - run tests headless
+- 'npx playwright test --headed' - run tests headed
 
 ## Best practices
 
