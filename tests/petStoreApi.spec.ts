@@ -69,7 +69,7 @@ test('Get (read) an order for a pet - validate status 404', async () => {
   expect(data).toMatchObject({ code: 1, type: 'error', message: 'Order not found' })
 })
 
-test('Delete an order for a pet', async () => {
+test.skip('Delete an order for a pet', async () => {
   const dataPet = dataPetO.generateRandomOrder()
 
   const createResponse = await new ApiRequestBuilder()

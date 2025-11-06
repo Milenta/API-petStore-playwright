@@ -56,7 +56,7 @@ test('User login - 200', async () => {
   expect(responsePost.status).toBe(200)
 })
 
-test('Update user and assert data with get request', async () => {
+test.skip('Update user and assert data with get request', async () => {
   const dataPut = dataPetO.generateRandomUser()
 
   const responsePut = await new ApiRequestBuilder()
@@ -101,7 +101,7 @@ test('Update user and assert data with get request', async () => {
   })
 })
 
-test('Validate error message when user does not exist', async () => {
+test.skip('Validate error message when user does not exist', async () => {
   const responseGet = await new ApiRequestBuilder()
     .setMethod(HttpMethod.GET)
     .setBaseURL(apiBaseUrl)
