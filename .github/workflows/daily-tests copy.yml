@@ -1,9 +1,9 @@
-name: Daily Tests
+name: Daily Tests 2
 
 on:
   schedule:
     # Run every day at 22 UTC
-    - cron: '15 20 * * *'
+    - cron: '00 8 * * *'
 
 jobs:
   build:
