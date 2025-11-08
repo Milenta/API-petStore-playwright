@@ -18,9 +18,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ windows }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: windows-node-hashFiles('**/package-lock.json')
           restore-keys: |
-            ${{ windows }}-node-
+          windows-node-
 
       # Install dependencies only if the cache misses
       - name: Install dependencies
@@ -49,9 +49,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ windows }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: windows-node-hashFiles('**/package-lock.json')
           restore-keys: |
-            ${{ windows }}-node-
+          windows-node-
 
       # Run your Playwright tests
       - name: Run Playwright tests
