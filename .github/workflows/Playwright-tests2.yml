@@ -5,7 +5,7 @@ on: [push]
 jobs:
   # 1. Job to Install Playwright and Cache dependencies
   install_and_cache:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,7 +22,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             # FIX: Use ${{ }} syntax and proper indentation
-            ${{ runner.os }}-node-
+            windows-node-
 
       # Install dependencies only if the cache misses
       - name: Install dependencies
@@ -39,7 +39,7 @@ jobs:
   run_tests:
     # This job needs the 'install_and_cache' job to complete successfully
     needs: install_and_cache 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -55,7 +55,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             # FIX: Use ${{ }} syntax and proper indentation
-            ${{ runner.os }}-node-
+            windows-node-
 
       # Run your Playwright tests
       - name: Run Playwright tests
