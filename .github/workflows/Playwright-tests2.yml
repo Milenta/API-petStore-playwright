@@ -1,5 +1,8 @@
 name: Daily PP Tests
 
+workflow_dispatch:
+
+
 jobs:
   job1_build:
     runs-on: ubuntu-latest
