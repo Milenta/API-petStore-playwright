@@ -4,7 +4,7 @@ workflow_dispatch:
 
 
 jobs:
-  job1_build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Build Code
