@@ -1,6 +1,7 @@
 name: Playwright CI
 
-on: [push]
+on: 
+workflow_dispatch
 
 jobs:
   # 1. Job to Install Playwright and Cache dependencies
@@ -18,9 +19,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: windows-node-hashFiles('**/package-lock.json')
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-          windows-node-
+            ${{ runner.os }}-node-
 
       # Install dependencies only if the cache misses
       - name: Install dependencies
@@ -31,7 +32,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-  
+  ---
   
   # 2. Job to Run Tests
   run_tests:
@@ -49,9 +50,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: windows-node-hashFiles('**/package-lock.json')
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-          windows-node-
+            ${{ runner.os }}-node-
 
       # Run your Playwright tests
       - name: Run Playwright tests
