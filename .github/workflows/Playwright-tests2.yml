@@ -31,6 +31,11 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-      
+job2_test:
+    needs: build # This job will ONLY start after job1_build is complete and successful
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Tests
+        run: echo "Testing after build..."      
 
     #
