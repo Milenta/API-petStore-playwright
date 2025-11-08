@@ -1,4 +1,4 @@
-name: Daily Playwright Tests
+name: Daily Playwright Tests 2
 
 on:
   schedule:
