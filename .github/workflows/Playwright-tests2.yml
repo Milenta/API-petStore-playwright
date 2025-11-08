@@ -1,3 +1,5 @@
+name: Daily PP Tests
+
 jobs:
   job1_build:
     runs-on: ubuntu-latest
