@@ -6,7 +6,8 @@
   "scripts": {
     "prettier:write": "prettier --write .",
     "prettier:check": "prettier --check ./",
-    "prepare": "husky"
+    "prepare": "husky",
+    "runStoreApi": "npx playwright test petStoreApi.spec.ts"
   },
   "keywords": [],
   "author": "",

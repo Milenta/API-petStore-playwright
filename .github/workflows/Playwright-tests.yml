@@ -31,6 +31,9 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
+      - name: Run api Playwright tests
+        run: npm run petStoreApi
+
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }} # Uploads report even if a test fails
