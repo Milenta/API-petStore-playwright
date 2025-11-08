@@ -42,10 +42,10 @@ jobs:
           path: playwright-report/
           retention-days: 30 # Retains the report artifact for 30 days
 
-          testM:
-          needs: test
-    runs-on: ubuntu-latest
-    -name: Run api Playwright tests
-    run: npm run petStoreApi
+     # testM:
+   #       needs: test
+  #  runs-on: ubuntu-latest
+   # - name: Run api Playwright tests
+  #  run: npm run petStoreApi
 
       
