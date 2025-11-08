@@ -33,16 +33,16 @@ jobs:
 
       
 
-      test:
+    test:
           needs: build
     runs-on: ubuntu-latest
-    - name: Run api Playwright tests
-        run: npm run petStoreApi
+#- name: Run api Playwright tests
+    run: npm run petStoreApi
 
-      - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }} # Uploads report even if a test fails
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30 # Retains the report artifact for 30 days
+#- name: Upload Playwright report
+    uses: actions/upload-artifact@v4
+    if: ${{ !cancelled() }} # Uploads report even if a test fails
+    with:
+    name: playwright-report
+    path: playwright-report/
+    retention-days: 30 # Retains the report artifact for 30 days
