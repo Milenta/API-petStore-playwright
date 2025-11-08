@@ -22,7 +22,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             # FIX: Use ${{ }} syntax and proper indentation
-            windows-node-
+            ${{ runner.os }}-node-
 
       # Install dependencies only if the cache misses
       - name: Install dependencies
@@ -55,7 +55,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             # FIX: Use ${{ }} syntax and proper indentation
-            windows-node-
+            ${{ runner.os }}-node-
 
       # Run your Playwright tests
       - name: Run Playwright tests
