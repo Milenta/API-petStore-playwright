@@ -1,6 +1,11 @@
 name: Playwright CI
 
-on: [push]
+on:
+  schedule:
+    # Run every day at 7:10 AM UTC
+    - cron: '30 7 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   # 1. Job to Install Playwright and Cache dependencies
