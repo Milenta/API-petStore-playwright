@@ -20,7 +20,7 @@ jobs:
           path: node_modules
           # FIX: Use ${{ }} syntax and ${{ runner.os }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
+          restore-keys:
             # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
             ${{ runner.os }}-node-
 
@@ -53,7 +53,7 @@ jobs:
           path: node_modules
           # FIX: Use ${{ }} syntax and ${{ runner.os }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: | 
+          restore-keys:
             # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
             ${{ runner.os }}-node-
 
