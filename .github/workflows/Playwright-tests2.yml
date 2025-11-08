@@ -5,9 +5,9 @@ jobs:
       - name: Build Code
         run: echo "Building..."
   
-  job2_test:
-    needs: job1_build # This job will ONLY start after job1_build is complete and successful
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Tests
-        run: echo "Testing after build..."
+ # job2_test:
+ #   needs: job1_build # This job will ONLY start after job1_build is complete and successful
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - name: Run Tests
+ #       run: echo "Testing after build..."
