@@ -21,8 +21,8 @@ jobs:
           # FIX: Use ${{ }} syntax and ${{ runner.os }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-          # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
-          ${{ runner.os }}-node-
+            # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
+            ${{ runner.os }}-node-
 
       # Install dependencies only if the cache misses
       - name: Install dependencies
@@ -54,8 +54,8 @@ jobs:
           # FIX: Use ${{ }} syntax and ${{ runner.os }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: | 
-          # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
-          ${{ runner.os }}-node-
+            # FIX: Use ${{ runner.os }} for dynamic OS, even if you are running on Windows
+            ${{ runner.os }}-node-
 
       # Run your Playwright tests
       - name: Run Playwright tests
