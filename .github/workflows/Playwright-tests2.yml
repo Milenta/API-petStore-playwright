@@ -1,44 +1,59 @@
-name: Daily PP Tests
+name: Playwright CI
 
-on:
-  schedule:
-    # Run every day at 7:10 AM UTC
-    - cron: '30 7 * * *'
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: 
+workflow_dispatch
 
 jobs:
-  Build:
-    timeout-minutes: 60
+  # 1. Job to Install Playwright and Cache dependencies
+  install_and_cache:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/* # Use a long-term support Node.js version
+          node-version: 20
 
+      # Cache the node modules, including Playwright
+      - name: Cache dependencies
+        id: cache-npm
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ windows }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ windows }}-node-
+
+      # Install dependencies only if the cache misses
       - name: Install dependencies
-        run: npm ci # Use npm ci for clean installs in CI environments
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm install
 
+      # Install Playwright browsers ONLY in this job
       - name: Install Playwright Browsers
-        # This command installs the necessary browsers (Chromium, Firefox, WebKit)
         run: npx playwright install --with-deps
+
+  ---
   
-  test:
-    needs: Build # This job will ONLY start after job1_build is complete and successful
+  # 2. Job to Run Tests
+  run_tests:
+    # This job needs the 'install_and_cache' job to complete successfully
+    needs: install_and_cache 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Restore the cached dependencies (Playwright and Browsers are here)
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ windows }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ windows }}-node-
+
+      # Run your Playwright tests
       - name: Run Playwright tests
         run: npx playwright test
-
-      - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }} # Uploads report even if a test fails
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30 # Retains the report artifact for 30 days
