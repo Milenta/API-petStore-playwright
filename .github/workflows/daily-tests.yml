@@ -20,6 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
+test:
       - name: Run tests
         run: npx playwright test
