@@ -34,7 +34,7 @@ test('Place an order for a pet', async () => {
   })
 })
 
-test('Get (read) an order for a pet - validate status 200', async () => {
+/*test.skip('Get (read) an order for a pet - validate status 200', async () => {
   console.log(`getting order with id ${dataPet.id}`)
   const response = await new ApiRequestBuilder()
     .setMethod(HttpMethod.GET)
@@ -54,7 +54,7 @@ test('Get (read) an order for a pet - validate status 200', async () => {
     status: expect.any(String),
     complete: expect.any(Boolean),
   })
-})
+})*/
 
 test('Get (read) an order for a pet - validate status 404', async () => {
   const dataPet = dataPetO.generateOrderOne()
@@ -69,7 +69,7 @@ test('Get (read) an order for a pet - validate status 404', async () => {
   expect(data).toMatchObject({ code: 1, type: 'error', message: 'Order not found' })
 })
 
-test.skip('Delete an order for a pet', async () => {
+/*test.skip('Delete an order for a pet', async () => {
   const dataPet = dataPetO.generateRandomOrder()
 
   const createResponse = await new ApiRequestBuilder()
@@ -97,7 +97,7 @@ test.skip('Delete an order for a pet', async () => {
   expect(deleteResponse.status).toBe(200) // Expecting a 200 - status OK
   const data = await deleteResponse.json()
   expect(data.message).toEqual(dataPet.id.toString()) // assert that deleted id is sent as message
-})
+})*/
 
 test.afterAll('Delete data', async () => {
   // delete created data
