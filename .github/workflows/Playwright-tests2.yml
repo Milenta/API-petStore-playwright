@@ -63,3 +63,27 @@ jobs:
       # Run your Playwright tests
       - name: Run Playwright tests
         run: npx playwright test
+  # 2. Job to Run Tests
+  run_tests_2:
+    # This job needs the 'install_and_cache' job to complete successfully
+    needs: install_and_cache 
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Restore the cached dependencies (Playwright and Browsers are here)
+      - name: Restore dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys:
+            # CORRECTED: Use hyphen (-) to define the list item
+            -${{ runner.os }}-node-
+
+      # Run your Playwright tests
+      - name: Run Playwright tests
+        run: npm run runStoreApi
